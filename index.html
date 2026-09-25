@@ -3,34 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مجمع الصفصاف | AL-SAFSAF</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>مجمع الصفصاف | AL-SAFSAF - من كل موسم ترند جديد</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Loading interface -->
+    <!-- Loading Screen -->
     <div class="loader" id="loader">
-        <img class="loader-logo" src="photo_٢٠٢٦-٠٩-٢٣_١٥-٤٢-٠٤-Picsart-BackgroundRemover.jpg" alt="شعار مجمع الصفصاف">
+        <img src="Logo.jpg" alt="AL-SAFSAF Logo" class="loader-logo">
     </div>
 
-    <!-- Cursor effect -->
+    <!-- Custom Cursor -->
     <div class="custom-cursor" id="cursor"></div>
 
-    <!-- Falling leaves -->
+    <!-- Falling Leaves Background -->
     <div class="leaves-container" id="leavesContainer"></div>
 
-    <!-- Navigation interface -->
+    <!-- Navbar -->
     <nav class="navbar" id="navbar">
-        <a href="#" class="nav-logo">
-            <img src="photo_٢٠٢٦-٠٩-٢٣_١٥-٤٢-٠٤-Picsart-BackgroundRemover.jpg" alt="شعار مجمع الصفصاف">
+        <a href="#home" class="nav-logo">
+            <img src="Logo.jpg" alt="AL-SAFSAF">
             <div class="nav-logo-text">
                 <span class="ar">مجمع الصفصاف</span>
                 <span class="en">AL-SAFSAF</span>
             </div>
         </a>
-
+        
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">الرئيسية</a></li>
             <li><a href="#about">من نحن</a></li>
@@ -39,290 +47,321 @@
             <li><a href="#contact" class="nav-cta">تواصل معنا</a></li>
         </ul>
 
-        <div class="menu-toggle" id="menuToggle">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="تفعيل الوضع الليلي" title="الوضع الليلي">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="cart-toggle" id="cartToggle">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-        <button class="cart-toggle" id="cartToggle" aria-label="فتح سلة المشتريات">
-            <i class="fas fa-basket-shopping"></i>
-            <span class="cart-count" id="cartCount">0</span>
-        </button>
     </nav>
 
-    <!-- Shopping cart interface -->
+    <!-- Shopping Cart Overlay -->
     <div class="cart-overlay" id="cartOverlay">
-        <aside class="cart-panel" aria-label="سلة المشتريات">
+        <div class="cart-panel">
             <div class="cart-header">
-                <h2><i class="fas fa-basket-shopping"></i> سلة المشتريات</h2>
-                <button class="cart-close" id="cartClose" aria-label="إغلاق السلة"><i class="fas fa-xmark"></i></button>
+                <h2>سلة المشتريات</h2>
+                <button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button>
             </div>
             <div class="cart-items" id="cartItems">
-                <div class="cart-empty"><i class="fas fa-basket-shopping"></i>السلة فارغة حالياً</div>
+                <div class="cart-empty">
+                    <i class="fas fa-basket-shopping"></i>
+                    السلة فارغة حالياً. تصفح منتجاتنا وأضف ما يعجبك!
+                </div>
             </div>
             <div class="cart-footer">
-                <div class="cart-total"><span>الإجمالي</span><strong id="cartTotal">0 ر.س</strong></div>
-                <button class="btn-primary cart-checkout"><i class="fas fa-credit-card"></i><span>إتمام الطلب</span></button>
+                <div class="cart-total">
+                    <span>الإجمالي:</span>
+                    <strong id="cartTotal">0 ر.س</strong>
+                </div>
+                <button class="btn-primary cart-checkout" id="checkoutBtn">
+                    <span>إتمام الطلب عبر واتساب</span>
+                    <i class="fab fa-whatsapp"></i>
+                </button>
             </div>
-        </aside>
+        </div>
     </div>
 
-    <!-- Hero interface -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <div class="hero-text">
+            <div class="hero-text reveal">
                 <div class="hero-badge">
-                    <i class="fas fa-leaf"></i>
-                    من كل موسم .. نولّد جديد
+                    <i class="fas fa-fire"></i>
+                    من كل موسم.. ترند جديد
                 </div>
                 <h1 class="hero-title">
-                    طبيعة <span class="highlight">أصيلة</span><br>
-                    وجودة لا تُضاهى
+                    مساحة تجارية رقمية<br>
+                    تجمع <span class="highlight">الجديد والمميز</span>
                 </h1>
                 <p class="hero-subtitle">
-                    نقدم لك أفضل المنتجات الطبيعية المستخلصة من خيرات الأرض، بجودة عالية ونكهة أصيلة تعكس تراثنا العريق
+                    نكتشف المنتجات الرائدة ونقدمها لك بأسعار تناسب جميع الميزانيات. 
+                    إلكترونيات، إكسسوارات، هدايا، ومستلزمات يومية بجودة مضمونة.
                 </p>
+                
                 <div class="hero-buttons">
                     <a href="#products" class="btn-primary">
-                        <span>استكشف منتجاتنا</span>
+                        <span>تصفح المنتجات</span>
                         <i class="fas fa-arrow-left"></i>
                     </a>
                     <a href="#about" class="btn-secondary">
-                        <i class="fas fa-play-circle"></i>
-                        <span>تعرف علينا</span>
+                        <span>من نحن</span>
+                        <i class="fas fa-info-circle"></i>
                     </a>
                 </div>
+
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number"><span class="counter" data-target="15">0</span><span class="plus">+</span></div>
-                        <div class="stat-label">سنة خبرة</div>
+                        <div class="stat-number"><span class="counter" data-target="500">0</span><span class="plus">+</span></div>
+                        <div class="stat-label">منتج متنوع</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number"><span class="counter" data-target="2000">0</span><span class="plus">+</span></div>
+                        <div class="stat-label">عميل في المجتمع</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number"><span class="counter" data-target="50">0</span><span class="plus">+</span></div>
-                        <div class="stat-label">منتج طبيعي</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number"><span class="counter" data-target="10000">0</span><span class="plus">+</span></div>
-                        <div class="stat-label">عميل سعيد</div>
+                        <div class="stat-label">علامة تجارية</div>
                     </div>
                 </div>
             </div>
 
-            <div class="hero-visual">
+            <div class="hero-visual reveal">
                 <div class="hero-logo-container">
                     <div class="hero-logo-ring ring-1"><div class="ring-dot"></div></div>
                     <div class="hero-logo-ring ring-2"></div>
                     <div class="hero-logo-ring ring-3"></div>
-                    <img class="hero-logo-main" src="photo_٢٠٢٦-٠٩-٢٣_١٥-٤٢-٠٤-Picsart-BackgroundRemover.jpg" alt="شعار مجمع الصفصاف">
-                    <svg class="floating-leaf fl-1" viewBox="0 0 50 50">
-                        <path d="M25 5 C35 15, 40 30, 25 45 C10 30, 15 15, 25 5" fill="#A8BFA9"/>
-                    </svg>
-                    <svg class="floating-leaf fl-2" viewBox="0 0 50 50">
-                        <path d="M25 5 C35 15, 40 30, 25 45 C10 30, 15 15, 25 5" fill="#124837"/>
-                    </svg>
-                    <svg class="floating-leaf fl-3" viewBox="0 0 50 50">
-                        <path d="M25 5 C35 15, 40 30, 25 45 C10 30, 15 15, 25 5" fill="#E67E22"/>
-                    </svg>
+                    <img src="Logo.jpg" alt="AL-SAFSAF Main Logo" class="hero-logo-main">
+                    
+                    <svg class="floating-leaf fl-1" viewBox="0 0 50 50"><path d="M25 5 C35 15, 40 30, 25 45 C10 30, 15 15, 25 5" fill="#A8BFA9"/></svg>
+                    <svg class="floating-leaf fl-2" viewBox="0 0 50 50"><path d="M25 5 C35 15, 40 30, 25 45 C10 30, 15 15, 25 5" fill="#E67E22"/></svg>
+                    <svg class="floating-leaf fl-3" viewBox="0 0 50 50"><path d="M25 5 C35 15, 40 30, 25 45 C10 30, 15 15, 25 5" fill="#124837"/></svg>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About interface -->
+    <!-- About Section -->
     <section class="about" id="about">
         <div class="about-grid">
             <div class="about-image reveal">
-                <img src="photo_٢٠٢٦-٠٩-٢٣_١٥-٤٢-٠٤-Picsart-BackgroundRemover.jpg" alt="شعار مجمع الصفصاف">
+                <img src="Logo.jpg" alt="AL-SAFSAF Identity">
             </div>
             <div class="about-content reveal">
                 <span class="section-tag">من نحن</span>
-                <h2>قصة تجمع بين الأصالة والطبيعة</h2>
+                <h2>قصة تجمع بين الطبيعة والتجارة الرقمية</h2>
                 <p>
-                    منذ أكثر من 15 عاماً، ونحن نحرص على تقديم أفضل المنتجات الطبيعية المستوحاة من تراثنا العريق. نجمع بين حكمة الأجداد وأحدث تقنيات الإنتاج لنقدم لك منتجات تحمل روح الطبيعة في كل تفصيلة.
+                    مجمع الصفصاف هو مشروع تجارة رقمية محلية يهدف إلى جمع المنتجات المتنوعة والرائجة في مكان واحد. 
+                    نبدأ بشكل بسيط ومحلي، ونعتمد على وسائل التواصل الاجتماعي وواتساب للوصول إلى عملائنا.
+                    هدفنا طويل المدى هو التطور التدريجي من التجارة الاجتماعية إلى منصة متكاملة.
                 </p>
                 <div class="about-features">
                     <div class="about-feature">
-                        <i class="fas fa-seedling"></i>
-                        <span>100% طبيعي</span>
+                        <i class="fas fa-search-dollar"></i>
+                        <span>اكتشاف الترندات</span>
                     </div>
                     <div class="about-feature">
-                        <i class="fas fa-award"></i>
-                        <span>جودة معتمدة</span>
+                        <i class="fas fa-tags"></i>
+                        <span>أسعار متنوعة</span>
                     </div>
                     <div class="about-feature">
-                        <i class="fas fa-truck"></i>
-                        <span>توصيل سريع</span>
+                        <i class="fas fa-shield-alt"></i>
+                        <span>جودة مضمونة</span>
                     </div>
                     <div class="about-feature">
-                        <i class="fas fa-heart"></i>
-                        <span>صنع بحب</span>
+                        <i class="fas fa-truck-fast"></i>
+                        <span>توصيل محلي سريع</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services interface -->
+    <!-- Services Section -->
     <section class="services" id="services">
         <div class="section-header reveal">
             <span class="section-tag">خدماتنا</span>
             <h2 class="section-title">ما نقدمه لك</h2>
-            <p class="section-desc">نقدم مجموعة متكاملة من الخدمات والمنتجات الطبيعية التي تلبي احتياجاتك</p>
+            <p class="section-desc">نقدم تجربة تسوق رقمية متكاملة تجمع بين التنوع والجودة والسهولة</p>
         </div>
+        
         <div class="services-grid">
             <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-leaf"></i></div>
-                <h3>منتجات طبيعية</h3>
-                <p>مجموعة واسعة من المنتجات الطبيعية المستخلصة من أجود أنواع النباتات والأعشاب</p>
+                <div class="service-icon"><i class="fas fa-fire-flame-curved"></i></div>
+                <h3>اكتشاف الترندات</h3>
+                <p>نراقب السوق باستمرار لنقدم لك أحدث المنتجات الرائجة والموسمية قبل غيرنا.</p>
             </div>
             <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-oil-can"></i></div>
-                <h3>زيوت طبيعية</h3>
-                <p>زيوت عضوية نقية 100% مستخرجة بطرق تقليدية تحافظ على قيمتها الغذائية</p>
+                <div class="service-icon"><i class="fas fa-bag-shopping"></i></div>
+                <h3>خيارات متنوعة</h3>
+                <p>إلكترونيات، إكسسوارات، هدايا، قرطاسية، ومستلزمات منزلية تناسب جميع الأذواق.</p>
             </div>
             <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-mortar-pestle"></i></div>
-                <h3>أعشاب طبية</h3>
-                <p>تشكيلة متنوعة من الأعشاب الطبية المفيدة للصحة والعناية الشخصية</p>
+                <div class="service-icon"><i class="fas fa-users-gear"></i></div>
+                <h3>مجتمع تفاعلي</h3>
+                <p>انضم لمجتمعنا على واتساب للحصول على عروض حصرية ونصائح شراء وتجارب حقيقية.</p>
             </div>
             <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-box-open"></i></div>
-                <h3>هدايا موسمية</h3>
-                <p>باقات وهدايا مميزة مناسبة لجميع المناسبات والأعياد بتصاميم أنيقة</p>
+                <div class="service-icon"><i class="fas fa-truck-ramp-box"></i></div>
+                <h3>توصيل محلي سريع</h3>
+                <p>خدمة توصيل موثوقة وسريعة لجميع مناطق الرياض مع ضمان وصول المنتج بحالة ممتازة.</p>
             </div>
             <div class="service-card reveal">
-                <div class="service-icon"><i class="fas fa-truck-fast"></i></div>
-                <h3>توصيل سريع</h3>
-                <p>خدمة توصيل سريعة وآمنة لجميع المنتجات إلى باب منزلك في أي مكان</p>
+                <div class="service-icon"><i class="fas fa-wallet"></i></div>
+                <h3>أسعار تنافسية</h3>
+                <p>خيارات تناسب مختلف الميزانيات من الفئة الاقتصادية إلى المنتجات المميزة والفاخرة.</p>
             </div>
             <div class="service-card reveal">
                 <div class="service-icon"><i class="fas fa-headset"></i></div>
                 <h3>دعم متواصل</h3>
-                <p>فريق دعم متخصص جاهز لمساعدتك والإجابة على جميع استفساراتك على مدار الساعة</p>
+                <p>فريق دعم جاهز للرد على استفساراتك ومساعدتك في اختيار المنتج المناسب عبر واتساب.</p>
             </div>
         </div>
     </section>
 
-    <!-- Products interface -->
+    <!-- Products Section -->
     <section class="products" id="products">
         <div class="section-header reveal">
-            <span class="section-tag" style="color: var(--sunset-orange);">منتجاتنا</span>
-            <h2 class="section-title">منتجات طبيعية بأعلى جودة</h2>
-            <p class="section-desc">اكتشف تشكيلتنا المميزة من المنتجات الطبيعية المختارة بعناية</p>
+            <span class="section-tag">منتجاتنا</span>
+            <h2 class="section-title">تشكيلة مميزة ومتنوعة</h2>
+            <p class="section-desc">اكتشف أحدث المنتجات الرائدة التي اخترناها بعناية لتناسب ذوقك وميزانيتك</p>
         </div>
+        
         <div class="products-grid">
             <div class="product-card reveal">
-                <div class="product-image">🫒</div>
-                <h3>زيت الزيتون البكر</h3>
-                <p>زيت زيتون عضوي مستخرج من أجود أنواع الزيتون، غني بمضادات الأكسدة</p>
+                <div class="product-image">
+                    <img src="assets/products/XT-04.webp" alt="سماعات بلوتوث لاسلكية" loading="lazy">
+                    <span class="product-brand-mark"><img src="Logo.jpg" alt="شعار مجمع الصفصاف"></span>
+                </div>
+                <h3>سماعات بلوتوث لاسلكية</h3>
+                <p>صوت نقي وتصميم مريح، بطارية تدوم طويلاً مع خاصية إلغاء الضوضاء.</p>
+                <div class="product-price">
+                    <span class="price">89 ر.س</span>
+                    <button class="add-btn" data-name="سماعات بلوتوث" data-price="89" data-image="assets/products/XT-04.webp"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+            
+            <div class="product-card reveal">
+                <div class="product-image">
+                    <img src="assets/products/image.png" alt="كوب حراري بتصميم عصري" loading="lazy">
+                    <span class="product-brand-mark"><img src="Logo.jpg" alt="شعار مجمع الصفصاف"></span>
+                </div>
+                <h3>كوب حراري بتصميم عصري</h3>
+                <p>يحافظ على درجة حرارة المشروب لساعات، مثالي للهدايا والاستخدام اليومي.</p>
                 <div class="product-price">
                     <span class="price">45 ر.س</span>
-                    <button class="add-btn" data-name="زيت الزيتون البكر" data-price="45" data-icon="🫒"><i class="fas fa-plus"></i></button>
+                    <button class="add-btn" data-name="كوب حراري" data-price="45" data-image="assets/products/image.png"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
+            
             <div class="product-card reveal">
-                <div class="product-image">🍯</div>
-                <h3>عسل طبيعي</h3>
-                <p>عسل جبلي أصيل 100% طبيعي، خالي من أي إضافات صناعية</p>
+                <div class="product-image">
+                    <img src="assets/products/handbag-source.png" alt="حقيبة يد نسائية أنيقة" loading="lazy">
+                    <span class="product-brand-mark"><img src="Logo.jpg" alt="شعار مجمع الصفصاف"></span>
+                </div>
+                <h3>حقيبة يد نسائية أنيقة</h3>
+                <p>تصميم كلاسيكي فاخر بخامات عالية الجودة، مناسبة للعمل والمناسبات.</p>
                 <div class="product-price">
-                    <span class="price">85 ر.س</span>
-                    <button class="add-btn" data-name="عسل طبيعي" data-price="85" data-icon="🍯"><i class="fas fa-plus"></i></button>
+                    <span class="price">120 ر.س</span>
+                    <button class="add-btn" data-name="حقيبة يد نسائية" data-price="120" data-image="assets/products/handbag-source.png"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
+            
             <div class="product-card reveal">
-                <div class="product-image">🌿</div>
-                <h3>أعشاب مجففة</h3>
-                <p>مجموعة متنوعة من الأعشاب الطبية المجففة بعناية فائقة</p>
-                <div class="product-price">
-                    <span class="price">25 ر.س</span>
-                    <button class="add-btn" data-name="أعشاب مجففة" data-price="25" data-icon="🌿"><i class="fas fa-plus"></i></button>
+                <div class="product-image">
+                    <img src="assets/products/4cd5dksaf54c34a.png" alt="طقم قرطاسية فاخر" loading="lazy">
+                    <span class="product-brand-mark"><img src="Logo.jpg" alt="شعار مجمع الصفصاف"></span>
                 </div>
-            </div>
-            <div class="product-card reveal">
-                <div class="product-image">🌰</div>
-                <h3>مكسرات طبيعية</h3>
-                <p>تشكيلة فاخرة من المكسرات الطازجة المحمصة بطريقة صحية</p>
+                <h3>طقم قرطاسية فاخر</h3>
+                <p>دفاتر وأقلام بتصاميم إبداعية، هدية مثالية للطلاب والمحترفين.</p>
                 <div class="product-price">
-                    <span class="price">55 ر.س</span>
-                    <button class="add-btn" data-name="مكسرات طبيعية" data-price="55" data-icon="🌰"><i class="fas fa-plus"></i></button>
+                    <span class="price">35 ر.س</span>
+                    <button class="add-btn" data-name="طقم قرطاسية" data-price="35" data-image="assets/products/4cd5dksaf54c34a.png"><i class="fas fa-plus"></i></button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features interface -->
+    <!-- Features Section -->
     <section class="features">
         <div class="section-header reveal">
             <span class="section-tag">لماذا نحن</span>
             <h2 class="section-title">مميزات تجعلنا الخيار الأول</h2>
         </div>
+        
         <div class="features-grid">
             <div class="feature-box reveal">
                 <span class="feature-number">01</span>
                 <i class="fas fa-certificate"></i>
                 <h3>جودة مضمونة</h3>
-                <p>جميع منتجاتنا معتمدة ومرخصة من الجهات المختصة</p>
+                <p>نختار منتجاتنا بعناية فائقة ونضمن جودتها قبل عرضها عليك.</p>
             </div>
             <div class="feature-box reveal">
                 <span class="feature-number">02</span>
-                <i class="fas fa-hand-holding-heart"></i>
+                <i class="fas fa-heart"></i>
                 <h3>صنع بحب</h3>
-                <p>نهتم بكل تفصيلة في منتجاتنا لضمان رضاك التام</p>
+                <p>نهتم بكل تفصيلة في تجربة التسوق لضمان رضاك التام.</p>
             </div>
             <div class="feature-box reveal">
                 <span class="feature-number">03</span>
                 <i class="fas fa-leaf"></i>
                 <h3>صديق للبيئة</h3>
-                <p>نستخدم مواد تغليف قابلة للتحلل وصديقة للبيئة</p>
+                <p>نستخدم مواد تغليف قابلة للتحلل وصديقة للبيئة قدر الإمكان.</p>
             </div>
             <div class="feature-box reveal">
                 <span class="feature-number">04</span>
-                <i class="fas fa-shield-halved"></i>
+                <i class="fas fa-rotate-left"></i>
                 <h3>ضمان الاسترجاع</h3>
-                <p>نضمن لك استرجاع المنتج خلال 30 يوم إذا لم يعجبك</p>
+                <p>نضمن لك استرجاع المنتج خلال 14 يوم إذا لم يعجبك أو كان به عيب.</p>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials interface -->
+    <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="section-header reveal">
             <span class="section-tag">آراء العملاء</span>
-            <h2 class="section-title">ماذا يقول عملاؤنا</h2>
+            <h2 class="section-title">ماذا يقول مجتمعنا</h2>
         </div>
+        
         <div class="testimonials-slider reveal">
             <div class="testimonial-track" id="testimonialTrack">
                 <div class="testimonial-card">
-                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                    <p>منتجات رائعة وجودة عالية جداً. زيت الزيتون من مجمع الصفصاف لا يُقارن بأي منتج آخر في السوق. أنصح به بشدة!</p>
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p>"تجربة رائعة! وجدت منتجات لم أجدها في أي مكان آخر. التوصيل كان سريع والتغليف أنيق جداً. أنصح الجميع بالانضمام لمجتمعهم."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">أح</div>
                         <div class="author-info">
                             <h4>أحمد محمد</h4>
-                            <span>عميل منذ 3 سنوات</span>
+                            <span>عضو في المجتمع منذ 6 أشهر</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                    <p>التعامل راقي والمنتجات طبيعية 100%. العسل الجبلي لديهم أفضل عسل تذوقته في حياتي. شكراً مجمع الصفصاف!</p>
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p>"الأسعار ممتازة مقارنة بالجودة. اشتريت هدايا لأصدقائي من عندهم وكانت ردود الفعل رائعة. خدمة العملاء عبر واتساب سريعة ومهذبة."</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">فا</div>
+                        <div class="author-avatar">نو</div>
                         <div class="author-info">
-                            <h4>فاطمة العلي</h4>
-                            <span>عميلة منذ سنتين</span>
+                            <h4>نورة العتيبي</h4>
+                            <span>عميلة دائمة</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                    <p>خدمة عملاء ممتازة وتوصيل سريع. المنتجات تصل بحالة ممتازة والتغليف أنيق جداً. تجربة رائعة من البداية للنهاية!</p>
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <p>"أحب فكرة أنهم يجلبون المنتجات الرائدة أولاً بأول. دائماً أجد عندهم الجديد والمميز. مجمع الصفصاف أصبح وجهتي الأولى للتسوق."</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">خا</div>
+                        <div class="author-avatar">سا</div>
                         <div class="author-info">
-                            <h4>خالد السعيد</h4>
-                            <span>عميل منذ سنة</span>
+                            <h4>سارة الدوسري</h4>
+                            <span>عضوة نشطة في المجموعة</span>
                         </div>
                     </div>
                 </div>
@@ -335,34 +374,33 @@
         </div>
     </section>
 
-    <!-- Call to action interface -->
+    <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-content reveal">
-            <h2>من كل موسم .. نولّد جديد</h2>
-            <p>انضم إلى آلاف العملاء السعيدين واستمتع بتجربة تسوق فريدة مع منتجاتنا الطبيعية</p>
+            <h2>من كل موسم.. نولّد جديد</h2>
+            <p>انضم إلى آلاف العملاء السعيدين واستمتع بتجربة تسوق فريدة مع منتجاتنا المتنوعة</p>
             <a href="#products" class="cta-btn">
-                <i class="fas fa-shopping-bag"></i>
-                تسوق الآن
+                <span>تسوق الآن</span>
+                <i class="fas fa-arrow-left"></i>
             </a>
         </div>
     </section>
 
-    <!-- Footer interface -->
+    <!-- Footer -->
     <footer id="contact">
         <div class="footer-grid">
             <div class="footer-brand">
-                <img src="photo_٢٠٢٦-٠٩-٢٣_١٥-٤٢-٠٤-Picsart-BackgroundRemover.jpg" alt="شعار مجمع الصفصاف">
+                <img src="Logo.jpg" alt="AL-SAFSAF">
                 <h3>مجمع الصفصاف</h3>
-                <p>من كل موسم نولّد جديد. نقدم لك أفضل المنتجات الطبيعية بجودة عالية ونكهة أصيلة.</p>
+                <p>مساحة تجارية رقمية تجمع الجديد، المميز والرائج في مكان واحد. البداية من هنا.</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/profile.php?id=61594701930436&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" title="فيسبوك">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+                    <a href="https://wa.me/963952185331" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/1FZXsH6tCG/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
                 </div>
             </div>
+            
             <div class="footer-col">
                 <h4>روابط سريعة</h4>
                 <ul>
@@ -372,34 +410,54 @@
                     <li><a href="#products">منتجاتنا</a></li>
                 </ul>
             </div>
+            
             <div class="footer-col">
-                <h4>المنتجات</h4>
+                <h4>التصنيفات</h4>
                 <ul>
-                    <li><a href="#">زيوت طبيعية</a></li>
-                    <li><a href="#">أعشاب طبية</a></li>
-                    <li><a href="#">عسل طبيعي</a></li>
-                    <li><a href="#">مكسرات</a></li>
+                    <li><a href="#">إلكترونيات</a></li>
+                    <li><a href="#">إكسسوارات وهدايا</a></li>
+                    <li><a href="#">قرطاسية</a></li>
+                    <li><a href="#">مستلزمات منزلية</a></li>
                 </ul>
             </div>
+            
             <div class="footer-col">
-                <h4>تواصل معنا</h4>
-                <ul>
-                    <li><a href="#"><i class="fas fa-phone"></i> +966 50 000 0000</a></li>
-                    <li><a href="#"><i class="fas fa-envelope"></i> info@alsafsaf.com</a></li>
-                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> الرياض، السعودية</a></li>
+                <h4>تابعنا وانضم لمجتمعنا</h4>
+                <ul class="social-links-list">
+                    <li>
+                        <a href="https://wa.me/963952185331" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i> تواصل معنا عبر واتساب
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/share/1FZXsH6tCG/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f"></i> صفحة فيسبوك الرسمية
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i> حساب انستغرام الرسمي
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-x-twitter"></i> حساب تويتر الرسمي
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
+        
         <div class="footer-bottom">
-            <p>© 2026 مجمع الصفصاف. جميع الحقوق محفوظة. صنع بـ <span class="heart">❤</span> في السعودية</p>
+            <p>© 2026 مجمع الصفصاف | AL-SAFSAF. جميع الحقوق محفوظة. صنع بـ <span class="heart">❤</span> في سوريا</p>
         </div>
     </footer>
 
-    <!-- Scroll to top -->
-    <button class="scroll-top" id="scrollTop">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
 
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
+
