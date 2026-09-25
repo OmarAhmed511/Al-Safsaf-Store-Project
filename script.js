@@ -1,20 +1,30 @@
 // ===== CONFIGURATION =====
 const ALSAFSAF_CONFIG = {
-    social: {
-        facebook: "FACEBOOK_URL",           // ضع رابط صفحة Facebook هنا
-        whatsappCommunity: "WHATSAPP_COMMUNITY_URL", // ضع رابط مجتمع WhatsApp هنا
-        whatsappGroup: "WHATSAPP_GROUP_URL"         // ضع رابط مجموعة WhatsApp هنا
-    },
+    whatsappNumber: "963952185331", // رقم الواتساب الخاص بك
     currency: "ر.س",
-    emptyCartMessage: "السلة فارغة حالياً. تصفح منتجاتنا وأضف ما يعجبك!",
-    whatsappNumber: "966500000000" // ضع رقم واتساب المشروع هنا بدون +
+    emptyCartMessage: "السلة فارغة حالياً. تصفح منتجاتنا وأضف ما يعجبك!"
 };
+
+// ===== THEME TOGGLE =====
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('alsafsaf-theme');
+if (savedTheme === 'dark') document.body.classList.add('dark-mode');
+function updateThemeButton() {
+    const isDark = document.body.classList.contains('dark-mode');
+    themeToggle.innerHTML = `<i class="fas fa-${isDark ? 'sun' : 'moon'}"></i>`;
+    themeToggle.setAttribute('aria-label', isDark ? 'تفعيل الوضع النهاري' : 'تفعيل الوضع الليلي');
+    themeToggle.title = isDark ? 'الوضع النهاري' : 'الوضع الليلي';
+}
+updateThemeButton();
+themeToggle.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark-mode');
+    localStorage.setItem('alsafsaf-theme', isDark ? 'dark' : 'light');
+    updateThemeButton();
+});
 
 // ===== LOADER =====
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-    }, 1500);
+    setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 1500);
 });
 
 // ===== CUSTOM CURSOR =====
@@ -115,13 +125,8 @@ function goToSlide(index) {
     track.style.transform = `translateX(${index * 100}%)`;
     dots.forEach((dot, i) => { dot.classList.toggle('active', i === index); });
 }
-dots.forEach(dot => {
-    dot.addEventListener('click', () => { goToSlide(+dot.getAttribute('data-index')); });
-});
-setInterval(() => {
-    currentSlide = (currentSlide + 1) % 3;
-    goToSlide(currentSlide);
-}, 5000);
+dots.forEach(dot => { dot.addEventListener('click', () => { goToSlide(+dot.getAttribute('data-index')); }); });
+setInterval(() => { currentSlide = (currentSlide + 1) % 3; goToSlide(currentSlide); }, 5000);
 
 // ===== PARALLAX EFFECT =====
 window.addEventListener('scroll', () => {
@@ -173,15 +178,29 @@ function renderCart() {
     
     cartItems.innerHTML = cart.length ? cart.map((item, index) => `
         <div class="cart-item">
-            <div class="cart-item-icon">${item.icon}</div>
+            <div class="cart-item-icon"><img src="${item.image}" alt="${item.name}"></div>
             <div class="cart-item-info">
                 <strong>${item.name} × ${item.quantity}</strong>
                 <span>${item.price * item.quantity} ${ALSAFSAF_CONFIG.currency}</span>
+            </div>
+            <div class="cart-item-controls" aria-label="تعديل كمية ${item.name}">
+                <button class="quantity-btn" data-index="${index}" data-change="-1" aria-label="إنقاص كمية ${item.name}">-</button>
+                <span class="quantity-value">${item.quantity}</span>
+                <button class="quantity-btn" data-index="${index}" data-change="1" aria-label="زيادة كمية ${item.name}">+</button>
             </div>
             <button class="cart-item-remove" data-index="${index}" aria-label="حذف ${item.name}">
                 <i class="fas fa-trash"></i>
             </button>
         </div>`).join('') : `<div class="cart-empty"><i class="fas fa-basket-shopping"></i>${ALSAFSAF_CONFIG.emptyCartMessage}</div>`;
+
+    cartItems.querySelectorAll('.quantity-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const item = cart[+button.dataset.index];
+            item.quantity += +button.dataset.change;
+            if (item.quantity <= 0) cart.splice(+button.dataset.index, 1);
+            renderCart();
+        });
+    });
         
     cartItems.querySelectorAll('.cart-item-remove').forEach(button => {
         button.addEventListener('click', () => {
@@ -206,7 +225,7 @@ document.querySelectorAll('.add-btn').forEach(button => {
     button.addEventListener('click', () => {
         const existing = cart.find(item => item.name === button.dataset.name);
         if (existing) existing.quantity += 1;
-        else cart.push({ name: button.dataset.name, price: +button.dataset.price, icon: button.dataset.icon, quantity: 1 });
+        else cart.push({ name: button.dataset.name, price: +button.dataset.price, image: button.dataset.image, quantity: 1 });
         renderCart();
         button.innerHTML = '<i class="fas fa-check"></i>';
         button.style.background = '#124837';
@@ -241,4 +260,5 @@ if (badge) {
         badge.style.opacity = '1';
         badge.style.transition = 'opacity 0.5s ease';
     }, 1000);
+    
 }
